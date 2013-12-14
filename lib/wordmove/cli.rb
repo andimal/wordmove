@@ -17,6 +17,7 @@ module Wordmove
       :plugins     => { :aliases => "-p", :type => :boolean },
       :languages   => { :aliases => "-l", :type => :boolean },
       :db          => { :aliases => "-d", :type => :boolean },
+      :db_no_file  => { :aliases => "-n", :type => :boolean },
 
       :verbose     => { :aliases => "-v", :type => :boolean },
       :simulate    => { :aliases => "-s", :type => :boolean },

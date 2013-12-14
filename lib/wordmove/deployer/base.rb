@@ -30,6 +30,8 @@ module Wordmove
           elsif options[environment][:ssh]
             require 'wordmove/deployer/ssh'
             SSH.new(environment, options)
+          elsif options[:db_no_file]
+            require 'wordmove/deployer/db_only'
           else
             raise StandardError, "No valid adapter found."
           end
