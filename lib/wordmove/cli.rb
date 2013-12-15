@@ -30,7 +30,7 @@ module Wordmove
 
     no_tasks do
       def handle_options(options)
-        %w(wordpress uploads themes plugins languages db).map(&:to_sym).each do |task|
+        %w(wordpress uploads themes plugins languages db db_no_file).map(&:to_sym).each do |task|
           if options[task] || options[:all]
             yield task
           end

@@ -32,6 +32,7 @@ module Wordmove
             SSH.new(environment, options)
           elsif options[:db_no_file]
             require 'wordmove/deployer/db_only'
+            DB.new(environment, options)
           else
             raise StandardError, "No valid adapter found."
           end
@@ -86,6 +87,14 @@ module Wordmove
       end
 
       def pull_db
+        logger.task "Pulling Database"
+      end
+
+      def push_db_no_file;
+        logger.task "Pushing Database"
+      end
+
+      def pull_db_no_file
         logger.task "Pulling Database"
       end
 
@@ -207,6 +216,11 @@ module Wordmove
       def save_local_db(local_dump_path)
         # dump local mysql into file
         run mysql_dump_command(local_options[:database], local_dump_path)
+      end
+
+      def save_remote_db(remote_dump_path)
+        # dump remote mysql into file
+        run mysql_dump_command(remote_options[:database], remote_dump_path)
       end
 
       def remote_options
